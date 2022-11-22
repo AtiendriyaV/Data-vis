@@ -3,19 +3,23 @@ library("gplots")
 
 library(readxl)
 
-da <- read_excel("C:\\Users\\student\\Desktop\\blood.xlsx")
-View(da)
 
-str("cholesterol")
+dat2 <- cbind(cholesterol,da)
 
-attach(cholesterol)
+str("dat2")
+
+attach(dat2)
 
 aov2way <- aov(response~trt+BP , data=da)
 
 summary(aov2way)
 
-plotmeans(response~trt, xab="treatment" , ylab="response" , main = "Mean Plot\nwith 95% CI")
+detach(dat2)
 
-detach(cholesterol)
+print(dat2)
 
-print(cholesterol)
+
+#plotmeans(response~trt+BP, xab="treatment" , ylab="response" , main = "Mean Plot\nwith 95% CI")
+
+#da <- read_excel("C:\\Users\\student\\Desktop\\blood.xlsx")
+#View(da)
