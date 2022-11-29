@@ -1,0 +1,27 @@
+#time series analysis
+
+snowfall <- c(101.1,151,201.1,251,301.1,351,401.1,451,501.1,551,601.1,651)
+
+snowfall_timeseries <- ts(snowfall,start = c(2013,1),frequency = 12)
+
+print(snowfall_timeseries)
+
+png(file="snowfall.png")
+
+plot(snowfall_timeseries)
+
+dev.off()
+
+#time series addictive model;
+
+library(fpp)
+
+data(ausbeer)
+
+timeserie.beer = tail(head(ausbeer,17*4+2),17*4-4)
+
+png(file="time.png")
+
+plot(as.ts(timeserie.beer),col="magenta")
+
+dev.off()
