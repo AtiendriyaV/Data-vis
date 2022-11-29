@@ -14,9 +14,27 @@ library(fpp)
 data(ausbeer)
 
 timeserie.beer = tail(head(ausbeer,17*4+2),17*4-4)
-
+print(timeserie.beer)
 png(file="time.png")
 
 plot(as.ts(timeserie.beer),col="magenta")
 
+dev.off()
+
+#multiplicative model
+ 
+library((Ecdat))
+data("AirPassengers")
+timeserie_air=AirPassengers
+print(timeserie_air)
+png(file="air.png")
+plot(as.ts(timeserie_air))
+dev.off()
+
+#detecting the trend
+trend.beer(ma(timeserie.beer , order = 4 , centre = T))
+png(file="T2.png")
+plot(as.ts(timeserie.beer),col="red")
+lines(trend.beer,col="red")
+plot(as.ts(trend.beer),col="red")
 dev.off()
