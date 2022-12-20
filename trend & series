@@ -1,0 +1,32 @@
+#trenf of air passenger
+library(fpp)
+library(Ecdat)
+data(AirPassengers)
+timeserie.air=AirPassengers
+data("AirPassengers")
+
+
+trend.air = ma(timeserie.air, order = 12, centre = T)  
+jpeg(file = "time.jpeg")
+plot(as.ts(timeserie.air),col="blue")
+lines(trend.air,col="blue")
+
+jpeg(file = "airtrend.jpeg")
+plot(as.ts(trend.air),col="blue")
+
+
+
+#trend & time series beer
+library(fpp)  
+data(beer)
+
+timeserie.beer = tail(head(ausbeer, 17*4+2),17*4-4)  
+
+trend.beer = ma(timeserie.beer, order = 3, centre = T)  
+#jpeg(file = "time.jpeg")  
+
+plot(as.ts(timeserie.beer),col="red")  
+lines(trend.beer,col="red")  
+jpeg(file="trend.jpeg")
+plot(as.ts(trend.beer),col="red")  
+#dev.off()
