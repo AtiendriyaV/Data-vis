@@ -1,0 +1,68 @@
+ggplot(Orange, aes(x = age, y = circumference)) + geom_point(aes(color = factor(Tree))) + stat_smooth(method = "lm", col = "#C42126", se = FALSE, size = 1)
+
+
+library(scatterplot3d)
+attach(Orange)
+scatterplot3d(age, circumference,Tree,main = "3D Scatterplot")
+
+
+
+orange <- Orange[, c('age', 'circumference')]
+
+png(file = "plot.png")
+
+plot(x = orange$age, y = orange$circumference, xlab = "Age",ylab = "Circumference", main = "Age VS Circumference",col.lab = "darkgreen", col.main = "darkgreen",col.axis = "darkgreen")
+
+dev.off() 
+
+counts <- table(mtcars$gear)
+barplot(counts, main="Car Distribution", horiz=TRUE, names.arg=c("3 Gears", "4 Gears", "5 Gears"))
+
+
+Stack Bar Chart
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, main="Car Distribution by Gears and VS",  xlab="Number of Gears",  col= c("darkblue","red"), legend = rownames (counts))
+
+Grp Bar Chart
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, main="Car Distribution by Gears and VS",   xlab="Number of Gears", col=c("darkblue","red"),
+  legend = rownames(counts), beside=TRUE)
+
+Simple Pie Chart
+x <- c(20, 65, 15, 50)  
+labels <-  c("India", "America", "Sri Lanka", "Nepal")  
+png(file = "title_color.jpg")  
+pie(x,labels,main="Country Pie chart",col=rainbow
+(length(x)))  
+dev.off()  
+
+Slice percentage and chart legend
+
+x <- c(20, 65, 15, 50)  
+labels <- c("India", "America", "Shri Lanka", "Nepal")  
+pie_percent<- round(100*x/sum(x), 1)  
+png(file = "per_pie.jpg")  
+pie(x, labels = pie_percent, main = "Country Pie Chart",col = rainbow(length(x)))  
+legend("topright", c("India", "America", "Shri Lanka", "Nepal"), cex = 0.8,  
+fill = rainbow(length(x)))  
+dev.off()  
+
+
+Hierarchical Clustering
+
+Clusters <-hclust(dist(iris[,1:4])
+plot(clusters,xlab="clusters",ylab="height of dem")
+
+clusters2<-hclust(dist(iris[,1:4]),method='average')
+plot(clusters2,xlab="clusters",ylab="height of dem")
+
+
+clustercut2<-cutree(cluster, k=3)
+rect.hclust(clusters,k=3,border=2:6)
+
+
+
+
+
+
+
